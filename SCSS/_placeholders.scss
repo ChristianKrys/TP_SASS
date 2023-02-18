@@ -2,4 +2,11 @@
     display:flex;
     justify-content: center;
     align-items: center;
+    //flex-wrap: wrap;     /*utiliser le flex-wrap lorsque les width ne sont pas exprimés en %*/
+    align-content: space-around; 
+       
 }
+
+
+
+
