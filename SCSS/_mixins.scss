@@ -1,0 +1,37 @@
+@mixin absolute-el($top,$right,$bottom,$left,$x,$y){
+    position: absolute;
+    top: $top;
+    bottom: $bottom;
+    right: $right;
+    left: $left;
+    transform: translate($x,$y);
+}
+
+//----- pseudo el
+@mixin pseudo-el($display:block,$pos:absolute,$content:''){
+    content: $content;
+    display: $display;
+    position: $pos;
+}
+
+@mixin triangle($color:#fff,$size: 10px){
+    &::after{
+        content: '';
+        width: 0;
+        height: 0;
+        border-top: $size solid #fff;
+        border-left: $size solid transparent;
+        border-right: $size solid transparent;
+        position: absolute;
+        bottom: $size * -1;
+        left: calc(50% - #{$size});
+    }
+}
+
+
+
+
+
+
+
+
