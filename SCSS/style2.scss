@@ -1,0 +1,235 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+body{
+    font-family: 'Poppins', sans-serif;
+    background-color: rgb(246, 239, 239);  
+}
+
+*{
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+
+$marge_interne : 40px; // padding-left:20px padding-right:20px
+$max-width: 1160px;   // largeur maximale prévue pour mon main
+$Hauteur_petit_carre_droit: 240px;
+$Largeur_petit_carre_droit: 25%;
+
+main{
+    width: calc(100% - $marge_interne);
+    max-width: $max-width;
+    margin-left: auto;
+    margin-right: auto;  
+}
+
+//---- Barre de navigation ---------------
+.navbar{
+    display: flex;
+    justify-content: space-evenly;  
+    background-color: rgba(11, 11, 116,0.9); 
+    height: 50px; 
+    align-items: center;
+
+    ul{
+        display: flex;        
+    }
+
+    li{
+        list-style-type:square;
+        color: antiquewhite;
+        font-size: 1rem;
+        font-weight: 300;
+        margin: 0 30px;
+    }
+}
+.logo{
+    width: 30px;
+    margin: 0 10px;
+    cursor: pointer;
+    filter: grayscale(80%); /*rendre les image en noir sur blanc*/
+    transition: 0.5s;
+
+    &:hover{
+        filter: grayscale(0); 
+        transform:translateY(-5px);
+    }
+}
+
+
+//--- Deuxième barre de menu --------
+
+.logo_codeur{
+    width: 150px;
+}
+.navbar_2{    
+    display: flex;
+    justify-content: space-evenly;  
+    background-color: rgb(252, 252, 254); 
+    height: 80px; 
+    align-items: center;
+    box-shadow : 0px 5px 3px #c8c4c4;
+
+    ul{
+        display: flex;        
+    }
+
+    li{
+        list-style-type:none;
+        color: #626161;
+        font-size: 1.1rem;
+        font-weight:600;  
+        margin: 0 20px;      
+    }
+}
+.menu_secondaire{
+    display: flex; 
+    align-items: center;    
+}
+.bouton_sans_libelle{
+    height: 40px;
+    width: 40px;
+    border: 2px solid rgb(41, 78, 241);
+    border-radius: 20px;
+}
+.bouton_Newsletter{
+    color: rgb(252, 252, 254);
+    font-size: 1.1rem;
+    font-weight:600;  
+    background-color: rgb(41, 78, 241);
+    padding: 10px 20px;
+    border-radius: 30px;
+    margin-left: 20px;
+}
+
+
+//-------- Titre ------------
+.section_titre{
+    height: 80px*3;     
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content:space-evenly;  
+    align-items: center;
+    background-color: black;
+    border-radius: 30px;
+    margin: 30px 0px;
+}
+
+h1{
+    color: rgb(252, 252, 254);
+    font-size: 2rem;
+}
+.bouton_Trouver_freelance{
+    @extend .bouton_Newsletter;
+    background-color: rgb(74, 74, 78); 
+    padding: 20px;               
+}
+
+.contenuer_principal{
+    display: flex;
+    justify-content: space-between;
+    align-items:start;
+    flex-wrap: wrap;
+    margin-bottom: 30px;
+}
+
+//---- menu de gauche ------
+.bouton_sans_libelle_gauche1{ background-color: #4a2bf8;border: none;}
+.bouton_sans_libelle_gauche2{ background-color: #84aaf0;border: none;}
+.bouton_sans_libelle_gauche3{ background-color: #f25656;border: none;}
+.bouton_sans_libelle_gauche4{ background-color: #bc0a0a;border: none;}
+.bouton_sans_libelle_gauche5{ background-color: #3cd880;border: none;}
+.bouton_sans_libelle_gauche6{ background-color: #cabcbc;border: none;}
+.bouton_sans_libelle_gauche7{ background-color: #d944b1;border: none;}
+
+.menu_gauche{
+    width: 6%;
+    height: 41px*9;    
+    border-radius: 20px;
+    background-color: #fff;
+    min-width: 60px; 
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.section_contre{
+    width: 65%;
+    height: 80px*20;
+    border: 1px solid black;
+    border-radius: 20px;
+    background-color: #fff; 
+    min-width: 360px;  
+}
+.menu_droit{
+    width: $Largeur_petit_carre_droit;   
+    height: $Hauteur_petit_carre_droit*3 + 40px; //---40px pour le padding      
+    min-width: 250px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;  
+    position: sticky;
+    top: -250px;  
+}
+
+%petit_carre_droit{
+    width: 100%;
+    height: $Hauteur_petit_carre_droit;    
+    border-radius: 20px;
+}
+.menu_droit1{
+    @extend %petit_carre_droit;
+    background-color: rgb(107, 70, 240);
+}
+.menu_droit2{
+    @extend %petit_carre_droit;
+    background-color: rgb(70, 220, 240);
+}
+.menu_droit3{
+    @extend %petit_carre_droit;
+    background-color: rgb(107, 70, 240);
+}
+
+//--- contenus central ---
+.article{
+    width: 100%;
+}
+.titre_conteneur_principal{
+    font-size: 3rem;
+    font-weight: 600;
+    padding: 30px 0px;
+}
+.titre_article{      
+    padding: 40px 60px;
+    a{
+        color:#4a2bf8;
+        text-decoration: none;        
+    }
+}
+.site-vitrine-740x447{
+    img{
+        width: 100%;
+    }
+}
+.titre_article ul{
+    display: flex;    
+    list-style:square;    
+    li{
+       margin-right: 30px;       
+    }
+    margin-left: 30px; 
+}
+
+
+
+
+
+
+
+
+
+
+
+
