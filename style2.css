@@ -90,6 +90,7 @@ main, .conteneur_footer {
   padding: 10px 20px;
   border-radius: 30px;
   margin-left: 20px;
+  margin-right: 20px;
 }
 
 .section_titre {
@@ -352,10 +353,9 @@ h1 {
 
 .row_carreaux_publicite {
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
   align-items: center;
   flex-wrap: wrap;
-  padding: 20px 0px;
 }
 
 .col_carreaux_publicite_1, .col_carreaux_publicite_2 {
@@ -369,6 +369,7 @@ h1 {
   box-shadow: 3px 3px 3px 3px #626161;
   width: 47%;
   min-width: 200px;
+  margin-top: 30px;
 }
 
 .para_pub_top {
@@ -395,7 +396,7 @@ h1 {
   color: #fff;
   font-size: 1rem;
   padding: 15px 20px;
-  margin-top: 20px;
+  margin-top: 30px;
 }
 
 .row_article_similaire {
@@ -403,12 +404,12 @@ h1 {
   justify-content: space-between;
   align-items: center;
   flex-wrap: wrap;
-  margin-top: 20px;
 }
 
 .col_article_similaire_1, .col_article_similaire_2 {
   width: 365px;
   height: 370px;
+  margin-top: 20px;
 }
 
 .top_col_article_similaire {
@@ -991,6 +992,7 @@ footer {
 
 .col_footer {
   width: 22%;
+  min-width: 250px;
 }
 .col_footer input[type=email], .col_footer input[type=submit] {
   width: 100%;
@@ -1006,6 +1008,7 @@ footer {
 .ligne_bouton {
   display: flex;
   justify-content: flex-start;
+  flex-wrap: wrap;
 }
 .ligne_bouton .bouton_sans_libelle {
   margin: 20px 10px 20px 0px;
@@ -1024,6 +1027,71 @@ footer {
 .row_footer_2 a {
   text-decoration: none;
   color: #c8c4c4;
+}
+
+@media screen and (max-width: 1010px) {
+  .contenuer_principal {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+  }
+  .menu_droit {
+    min-width: 300px;
+    margin-top: 20px;
+  }
+  .col_footer {
+    width: 100%;
+    min-width: 250px;
+    margin-bottom: 20px;
+  }
+  .publicite {
+    padding: 20px;
+  }
+  .col_carreaux_publicite_1, .col_carreaux_publicite_2 {
+    width: 100%;
+    margin: 20px;
+  }
+  .row_article_similaire {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  /*Carroussel*/
+  .carroussel {
+    padding: 0px 10px;
+  }
+  .carroussel h2 {
+    font-size: 1rem;
+  }
+  .carroussel p {
+    text-align: center;
+  }
+  .recevoir_des_devis_gratuis {
+    font-size: 0.7rem;
+    font-weight: bold;
+  }
+  /*aside gauche*/
+  .menu_gauche {
+    height: 50px;
+    width: 80%;
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 20px;
+  }
+  /*Titre*/
+  .section_titre h1 {
+    font-size: 2rem;
+    text-align: center;
+  }
+  .liste_menu_principal li {
+    display: none;
+  }
+  .liste_menu_secondaire li {
+    display: none;
+  }
 }
 
 /*# sourceMappingURL=style2.css.map */
