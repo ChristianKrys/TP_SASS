@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        boutton{
+            padding: 10px;
+            margin: 10px;
+            background-color: rgba(0,255,0,0.6);
+        }
+    </style>
+</head>
+<body>
+    <h1 id="gros-titre">Les évènements</h1>
+    <div id="div1">
+        <p id="p1">Qui est le déclencheur ? Le porteur d'évènement</p>
+    </div>
+    <div class="bouton">
+        <br>
+        <boutton id="fOuvre">Ouvrir la fenêtre</boutton>
+        <boutton id="fModifie">Modifier la fenêtre</boutton>
+        <boutton id="fFerme">Fermer la fenêtre</boutton>
+        <boutton id="ouvreOnglet">Ouvre un nouvel onglet</boutton>
+        <boutton id="dimensionsEcran">Dimensions de l'écran</boutton>
+        <boutton id="infoNavigateur">Informations sur le navigateur</boutton>
+        <boutton id="geolocalisation">Informations de géolocalisation</boutton>
+
+        <p id="dimEcran"></p>
+        <p id="infoNav"></p>
+        <p id="geoLoc"></p>
+    </div>
+    
+    <script>
+        var d1 = document.getElementById('div1');
+        var par = document.getElementById('p1');
+
+        d1.addEventListener('click',message);
+        function message(event){
+            this.innerHTML =             
+                'Element déclencheur : '+event.target+
+                '<br>Element portant l\'évènement : '+ event.currentTarget;
+        }
+        
+        /* Bouton */
+        var ouvre = document.getElementById('fOuvre');
+        var ferme = document.getElementById('fFerme');
+        var modifie = document.getElementById('fModifie');
+        var ouvreOnglet = document.getElementById('ouvreOnglet');
+        var fenetre = '';
+
+
+        ouvre.addEventListener('click',ouvre_fen);
+        ferme.addEventListener('click',ferme_fen);
+        modifie.addEventListener('click',modifie_fen);
+        ouvreOnglet.addEventListener('click',fOuvreOnglet);
+
+        function ouvre_fen(){
+            //fenetre = window.open("https://www.w3schools.com","_blank","height=500,width=600");
+            traitement(1);
+        }
+
+        function modifie_fen(){
+            fenetre.resizeTo(100,300);
+        }
+
+        function ferme_fen(){
+            fenetre.close();
+        }
+
+        function fOuvreOnglet(){fenetre = window.open("https://www.w3schools.com");}
+
+        function traitement(type=1){
+            if (type == 1) {
+                fenetre = window.open("https://www.w3schools.com","_blank","height=500,width=1000");
+                var titre = fenetre.opener.document.getElementById('gros-titre')
+                titre.innerHTML = "Merci de m\' avoir créé"
+            }
+            if (type == 2) {fenetre.resizeTo(100,300);}
+            if (type == 3) {fenetre.close();}
+        }
+
+
+        var dimensionsEcran = document.getElementById('dimensionsEcran');
+        dimensionsEcran.addEventListener('mousedown',afficheDimendion)
+        function afficheDimendion(){
+            var hauteurEcran = screen.height;
+            var hauteurEcranDisponible = screen.availHeight;
+            var largeurEcran = screen.width;
+            var largeurEcranDisponible = screen.availWidth;
+            
+            var para = document.getElementById('dimEcran');
+            para.innerHTML = 
+                '<h1>'+dimensionsEcran.textContent+'</h1>'+
+                'hauteur Ecran : '+hauteurEcran+'px'+
+                '<br>hauteur Ecran Disponible : '+hauteurEcranDisponible+'px'+
+                '<br>largeur Ecran : '+largeurEcran+'px'+
+                '<br>largeur Ecran Disponible : '+largeurEcranDisponible+'px';            
+
+        }
+
+        var infoNavigateur = document.getElementById('infoNavigateur');
+        infoNavigateur.addEventListener('mousedown',afficheInfoNavigateur)
+        function afficheInfoNavigateur(){
+            var langue = navigator.language;
+            var nomNavigateur = navigator.appName;
+            var moteurNavigateur = navigator.product;
+            var cookiesAutorise = navigator.cookieEnabled;
+            var userAgent = navigator.userAgent;
+            var para = document.getElementById('infoNav');
+            para.innerHTML = 
+                '<h1>'+infoNavigateur.textContent+'</h1>'+
+                'Langue utilisée : '+langue+
+                '<br>Nom du navigateur : '+nomNavigateur+
+                '<br> Moteur du navigateur : '+moteurNavigateur+
+                '<br> User Agent : '+userAgent+
+                '<br> Cookies autorisées ? : '+cookiesAutorise;
+        }
+        
+        var para_geoLoc = document.getElementById('geoLoc');
+        var btn_geolocalisation = document.getElementById('geolocalisation');        
+        var infoLocalisation = navigator.geolocation;
+        btn_geolocalisation.addEventListener('mousedown',afficheinfoLocalisation)
+        
+        function afficheinfoLocalisation(){
+            if (infoLocalisation) {
+                /* localisation disponible */
+                infoLocalisation.getCurrentPosition(coordonnees);                
+            }
+            else{
+                para_geoLoc.innerHTML = 'Localisation non disponible';
+            }
+        }
+
+        function coordonnees(x){
+            para_geoLoc.innerHTML = 
+                '<h1>Geolocalisation</h1>'+
+                'Latitude : '+x.coords.latitude+
+                '<br>Longitude : '+x.coords.longitude;            
+        }
+        
+    </script>
+</body>
+</html>
